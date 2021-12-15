@@ -1,0 +1,75 @@
+﻿@model CrudTask1.Models.ViewModel.AddressViewModel
+
+@{
+    ViewData["Title"] = "AddAddress";
+}
+
+<h1>AddAddress</h1>
+
+<h4>Address</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddAddress" method="post" asp-controller="Employee">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="FirstAddress" class="control-label"></label>
+                <input asp-for="FirstAddress" class="form-control" />
+                <span asp-validation-for="FirstAddress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SecondAddress" class="control-label"></label>
+                <input asp-for="SecondAddress" class="form-control" />
+                <span asp-validation-for="SecondAddress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pincode" class="control-label"></label>
+                <input asp-for="Pincode" class="form-control" />
+                <span asp-validation-for="Pincode" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group">
+                <label>Select City</label>
+                <select name="CityCtId" class="form-control">
+                    <option value="">-----Select-----</option>
+                    @foreach (var ct in ViewBag.cts)
+                    {
+                        <option value="@ct.CtId">@ct.CityName</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Select State</label>
+                <select name="StateSid" class="form-control">
+                    <option value="">-----Select-----</option>
+                    @foreach (var st in ViewBag.sts)
+                    {
+                        <option value="@st.Sid">@st.StateName</option>
+                    }
+                </select>
+            </div> 
+            <div class="form-group">
+                <label>Select Country</label>
+                <select name="CountryCnid" class="form-control">
+                    <option value="">-----Select-----</option>
+                    @foreach (var cyt in ViewBag.cyts)
+                    {
+                        <option value="@cyt.Cnid">@cyt.CountryName</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="AddAddress" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

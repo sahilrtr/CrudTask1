@@ -1,0 +1,13 @@
+﻿@model IEnumerable<CrudTask1.Models.State>
+@{
+    ViewData["Title"] = "ShowEmpByStates";
+}
+
+<h1>Employee By States</h1>
+<ol>
+    @foreach (var cc in Model)
+    {
+    <li><a asp-action="ShowEmpByCity" asp-controller="Employee" asp-route-id="@cc.Sid">@cc.StateName</a></li>
+    }
+</ol>
+
